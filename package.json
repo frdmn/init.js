@@ -1,0 +1,15 @@
+{
+    "name": "igit",
+    "version": "0.0.1",
+
+    "description": "A simple command line script to quickly initialize git repositories",
+    "author": "Jonas Friedmann",
+    "engines": {
+      "node": ">=0.10"
+    },
+    "dependencies": {
+    },
+    "bin": {
+      "igit": "igit.js"
+    }
+}
