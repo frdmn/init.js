@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "clor": "^0.2.1",
+    "glob": "^5.0.6",
     "inquirer": "^0.8.4",
     "optimist": "^0.6.1",
     "shelljs": "^0.4.0"
