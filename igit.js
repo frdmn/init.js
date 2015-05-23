@@ -82,20 +82,18 @@ function loadAssets(callback){
 }
 
 /**
- * loadPrompt
+ * loadReadmePrompt
  *
- * Loads the prompts. Accepts array containing paths to readmes.
+ * Loads the readme prompt. Accepts array containing paths to readmes.
  *
  * @param {array} readmes [array containing paths to readmes]
  *
  */
 
-function loadPrompt(readmes, licenses){
+function loadReadmePrompt(readmes, callback){
   // extend readmes array
   readmes.push(new inquirer.Separator());
   readmes.push('none');
-  licenses.push(new inquirer.Separator());
-  licenses.push('none');
 
   inquirer.prompt([
     {
@@ -103,7 +101,27 @@ function loadPrompt(readmes, licenses){
       name: 'readme',
       message: 'Do you want me to create a README.md template?',
       choices: readmes
-    },
+    }
+  ], function( answers ) {
+    callback(answers);
+  });
+}
+
+/**
+ * loadLicensePrompt
+ *
+ * Loads the licenses prompt. Accepts array containing paths to readmes.
+ *
+ * @param {array} licenses [array containing paths to readmes]
+ *
+ */
+
+function loadLicensePrompt(licenses, callback){
+  // extend licenses array
+  licenses.push(new inquirer.Separator());
+  licenses.push('none');
+
+  inquirer.prompt([
     {
       type: 'list',
       name: 'license',
@@ -112,8 +130,8 @@ function loadPrompt(readmes, licenses){
       filter: function( val ) { return val.toLowerCase(); }
     }
   ], function( answers ) {
-      console.log( JSON.stringify(answers, null, '  ') );
-    });
+    callback(answers);
+  });
 }
 
 /**
@@ -136,6 +154,11 @@ if (checkIfCwdIsGitRepository()) {
   return false;
 } else {
   loadAssets(function(assets) {
-    loadPrompt(assets.readmes, assets.licenses);
+    loadReadmePrompt(assets.readmes, function(readmeAnswer){
+      loadLicensePrompt(assets.licenses, function(licenseAnswer){
+        console.log(readmeAnswer);
+        console.log(licenseAnswer);
+      });
+    });
   });
 }
