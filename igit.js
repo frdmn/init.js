@@ -3,10 +3,7 @@
 var $ = require("clor")
   , sh = require("shelljs")
   , inquirer = require('inquirer')
-  , glob = require("glob")
-  , argv = require('optimist')
-    .usage('Usage: $0')
-    .argv;
+  , glob = require("glob");
 
 /**
  * checkIfCwdIsGitRepository
