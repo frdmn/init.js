@@ -1,0 +1,42 @@
+# %projectname%
+
+[![Current tag](http://img.shields.io/github/tag/%gituser%/%projectname%.svg)](https://github.com/%gituser%/%projectname%/tags) [![Repository issues](http://issuestats.com/github/%gituser%/%projectname%/badge/issue)](http://issuestats.com/github/%gituser%/%projectname%)
+
+[description]
+
+## Installation
+
+1. Make sure you've installed all requirements
+2. Clone this repository:
+  `git clone https://github.com/%gituser%/%projectname%`
+3. Install the project using `make`:
+  `make install`
+
+## Usage
+
+Here's a short explanation how to use `%projectname%`:
+
+* Use it
+* Profit
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch: `git checkout -b feature/my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin feature/my-new-feature`
+5. Submit a pull request
+
+## Requirements / Dependencies
+
+* This
+* That
+* As well as this
+
+## Version
+
+1.0.0
+
+## License
+
+[%license%](LICENSE)
