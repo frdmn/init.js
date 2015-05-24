@@ -17,7 +17,7 @@ var $ = require("clor")
 function checkIfCwdIsGitRepository(){
   var cwd = sh.pwd();
 
-  if (sh.test('-e', cwd + '/.git')) {
+  if (sh.test('-e', cwd + '/.gits')) {
     return true;
   } else {
     return false;
@@ -82,52 +82,46 @@ function loadAssets(callback){
 }
 
 /**
- * loadReadmePrompt
+ * loadPrompt
  *
- * Loads the readme prompt. Accepts array containing paths to readmes.
+ * Loads the pretty InquirerJS prompt. Accepts array containing paths
+ * to readmes as well as a array containing paths to licenses.
  *
  * @param {array} readmes [array containing paths to readmes]
+ * @param {array} licenses [array containing paths to licenses]
  *
  */
 
-function loadReadmePrompt(readmes, callback){
-  // extend readmes array
+function loadPrompt(readmes, licenses, callback){
+  // extend arrays
   readmes.push(new inquirer.Separator());
   readmes.push('none');
-
-  inquirer.prompt([
-    {
-      type: 'list',
-      name: 'readme',
-      message: 'Do you want me to create a README.md template?',
-      choices: readmes
-    }
-  ], function( answers ) {
-    callback(answers);
-  });
-}
-
-/**
- * loadLicensePrompt
- *
- * Loads the licenses prompt. Accepts array containing paths to readmes.
- *
- * @param {array} licenses [array containing paths to readmes]
- *
- */
-
-function loadLicensePrompt(licenses, callback){
-  // extend licenses array
   licenses.push(new inquirer.Separator());
   licenses.push('none');
 
   inquirer.prompt([
     {
+      type: 'input',
+      name: 'project',
+      message: 'Name of your project?',
+    },
+    {
+      type: 'input',
+      name: 'maintainer',
+      message: 'Who\'s maintaining the project?',
+      default: '',
+    },
+    {
+      type: 'list',
+      name: 'readme',
+      message: 'Do you want me to create a README.md template?',
+      choices: readmes
+    },
+    {
       type: 'list',
       name: 'license',
       message: 'Which license do you want to use?',
       choices: licenses,
-      filter: function( val ) { return val.toLowerCase(); }
     }
   ], function( answers ) {
     callback(answers);
@@ -154,11 +148,8 @@ if (checkIfCwdIsGitRepository()) {
   return false;
 } else {
   loadAssets(function(assets) {
-    loadReadmePrompt(assets.readmes, function(readmeAnswer){
-      loadLicensePrompt(assets.licenses, function(licenseAnswer){
-        console.log(readmeAnswer);
-        console.log(licenseAnswer);
-      });
+    loadPrompt(assets.readmes, assets.licenses, function(answers){
+      console.log(answers);
     });
   });
 }
