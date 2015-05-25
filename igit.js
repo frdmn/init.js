@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-var $ = require("clor")
-  , sh = require("shelljs")
+var clor = require('clor')
+  , sh = require('shelljs')
   , inquirer = require('inquirer')
-  , glob = require("glob")
+  , glob = require('glob')
   , gitConfig = require('git-config')
-  , path = require('path');
-
-var config = gitConfig.sync();
+  , path = require('path')
+  , config = gitConfig.sync();
 
 /**
  * checkIfCwdIsGitRepository
@@ -149,7 +148,7 @@ function loadPrompt(readmes, licenses, callback){
  */
 
 function logError(msg){
-  console.log($.red('Error: ') + msg);
+  console.log(clor.red('Error: ') + msg);
 }
 
 /**
@@ -162,7 +161,7 @@ function logError(msg){
  */
 
 function logSuccess(msg){
-  console.log($.green('Success: ') + msg);
+  console.log(clor.green('Success: ') + msg);
 }
 
 /* Prompt */
