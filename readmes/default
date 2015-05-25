@@ -1,4 +1,4 @@
-# %projectname%
+# %project%
 
 [description]
 
@@ -6,13 +6,13 @@
 
 1. Make sure you've installed all requirements
 2. Clone this repository:
-  `git clone https://github.com/%gituser%/%projectname%`
+  `git clone https://github.com/%github%/%project%`
 3. Install the project using `make`:
   `make install`
 
 ## Usage
 
-Here's a short explanation how to use `%projectname%`:
+Here's a short explanation how to use `%project%`:
 
 * Use it
 * Profit

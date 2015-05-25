@@ -1,6 +1,6 @@
-# %projectname%
+# %project%
 
-[![Current tag](http://img.shields.io/github/tag/%gituser%/%projectname%.svg)](https://github.com/%gituser%/%projectname%/tags) [![Repository issues](http://issuestats.com/github/%gituser%/%projectname%/badge/issue)](http://issuestats.com/github/%gituser%/%projectname%)
+[![Current tag](http://img.shields.io/github/tag/%github%/%project%.svg)](https://github.com/%github%/%project%/tags) [![Repository issues](http://issuestats.com/github/%github%/%project%/badge/issue)](http://issuestats.com/github/%github%/%project%)
 
 [description]
 
@@ -8,13 +8,13 @@
 
 1. Make sure you've installed all requirements
 2. Clone this repository:
-  `git clone https://github.com/%gituser%/%projectname%`
+  `git clone https://github.com/%github%/%project%`
 3. Install the project using `make`:
   `make install`
 
 ## Usage
 
-Here's a short explanation how to use `%projectname%`:
+Here's a short explanation how to use _%project%_:
 
 * Use it
 * Profit
