@@ -1,7 +1,7 @@
 {
-  "name": "igit",
+  "name": "workspace-init",
   "version": "0.0.1",
-  "description": "A simple command line script to quickly initialize git repositories",
+  "description": "A simple command line utility to quickly initialize developer workspaces / repositories",
   "author": "Jonas Friedmann",
   "engines": {
     "node": ">=0.10"
@@ -14,7 +14,7 @@
     "shelljs": "^0.4.0"
   },
   "bin": {
-    "igit": "igit.js"
+    "init": "init.js"
   },
   "devDependencies": {}
 }
