@@ -146,6 +146,19 @@ function logError(msg){
   console.log($.red('Error: ') + msg);
 }
 
+/**
+ * logSuccess
+ *
+ * Logs success messages in green.
+ *
+ * @param {string} msg
+ *
+ */
+
+function logSuccess(msg){
+  console.log($.green('Success: ') + msg);
+}
+
 /* Prompt */
 
 if (checkIfCwdIsGitRepository()) {
