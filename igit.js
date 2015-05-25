@@ -113,13 +113,13 @@ function loadPrompt(readmes, licenses, callback){
     {
       type: 'input',
       name: 'maintainer',
-      message: 'Who\'s maintaining the project?',
+      message: 'Who maintains the project?',
       default: config.user.name,
     },
     {
       type: 'list',
       name: 'readme',
-      message: 'Do you want me to create a README.md template?',
+      message: 'Do you want me to create a base README.md?',
       choices: readmes
     },
     {
@@ -167,7 +167,23 @@ if (checkIfCwdIsGitRepository()) {
 } else {
   loadAssets(function(assets) {
     loadPrompt(assets.readmes, assets.licenses, function(answers){
-      console.log(answers);
+      var date = new Date();
+      sh.cp('-f', __dirname + '/readmes/' + answers.readme, 'README.md');
+      sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
+      sh.sed('-i', '%project%', answers.project, 'README.md');
+      sh.sed('-i', '%project%', answers.project, 'LICENSE');
+      sh.sed('-i', '%maintainer%', answers.maintainer, 'README.md');
+      sh.sed('-i', '%maintainer%', answers.maintainer, 'LICENSE');
+      sh.sed('-i', '%year%', date.getFullYear(), 'README.md');
+      sh.sed('-i', '%year%', date.getFullYear(), 'LICENSE');
+      if (config.github && config.github.user) {
+        sh.sed('-i', '%github%', config.github.user, 'README.md');
+        sh.sed('-i', '%github%', config.github.user, 'LICENSE');
+      } else {
+        sh.sed('-i', '%github%', '[GitHubUsername]', 'README.md');
+        sh.sed('-i', '%github%', '[GitHubUsername]', 'LICENSE');
+      }
+      logSuccess('Workspace successfully set up. Don\'t forget to $ git init :)');
     });
   });
 }
