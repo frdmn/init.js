@@ -4,7 +4,8 @@ var $ = require("clor")
   , sh = require("shelljs")
   , inquirer = require('inquirer')
   , glob = require("glob")
-  , gitConfig = require('git-config');
+  , gitConfig = require('git-config')
+  , path = require('path');
 
 var config = gitConfig.sync();
 
@@ -98,15 +99,16 @@ function loadAssets(callback){
 function loadPrompt(readmes, licenses, callback){
   // extend arrays
   readmes.push(new inquirer.Separator());
-  readmes.push('none');
+  readmes.push('✘ none');
   licenses.push(new inquirer.Separator());
-  licenses.push('none');
+  licenses.push('✘ none');
 
   inquirer.prompt([
     {
       type: 'input',
       name: 'project',
       message: 'Name of your project?',
+      default: path.basename(sh.pwd()),
     },
     {
       type: 'input',
