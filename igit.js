@@ -3,7 +3,10 @@
 var $ = require("clor")
   , sh = require("shelljs")
   , inquirer = require('inquirer')
-  , glob = require("glob");
+  , glob = require("glob")
+  , gitConfig = require('git-config');
+
+var config = gitConfig.sync();
 
 /**
  * checkIfCwdIsGitRepository
@@ -109,7 +112,7 @@ function loadPrompt(readmes, licenses, callback){
       type: 'input',
       name: 'maintainer',
       message: 'Who\'s maintaining the project?',
-      default: '',
+      default: config.user.name,
     },
     {
       type: 'list',
