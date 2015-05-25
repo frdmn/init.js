@@ -127,6 +127,12 @@ function loadPrompt(readmes, licenses, callback){
       name: 'license',
       message: 'Which license do you want to use?',
       choices: licenses,
+    },
+    {
+      type: 'confirm',
+      name: 'gitinit',
+      message: 'Want me to initialize a git repository?',
+      default: true
     }
   ], function( answers ) {
     callback(answers);
@@ -183,7 +189,12 @@ if (checkIfCwdIsGitRepository()) {
         sh.sed('-i', '%github%', '[GitHubUsername]', 'README.md');
         sh.sed('-i', '%github%', '[GitHubUsername]', 'LICENSE');
       }
-      logSuccess('Workspace successfully set up. Don\'t forget to $ git init :)');
+      if (answers.gitinit) {
+        sh.exec('git init', {
+          silent: true
+        });
+      }
+      logSuccess('Workspace successfully set up! Don\t forget to commit :)');
     });
   });
 }
