@@ -193,7 +193,7 @@ if (checkIfCwdIsGitRepository()) {
           silent: true
         });
       }
-      logSuccess('Workspace successfully set up! Don\t forget to commit :)');
+      logSuccess('Workspace successfully set up! Don\'t forget to adjust the mising placeholders :)');
     });
   });
 }
