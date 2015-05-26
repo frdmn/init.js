@@ -40,7 +40,7 @@ function checkIfCwdIsGitRepository(){
 
 function getAllPossibleReadmes(callback){
   glob(__dirname + '/readmes/*', function (er, readmes) {
-    var readmeNames = readmes.map(function(readme){
+    var readmeNames = readmes.map(function(readme) {
       return readme.replace(__dirname + '/readmes/', '').replace('_', ' ');
     });
     callback(readmeNames);
@@ -58,7 +58,7 @@ function getAllPossibleReadmes(callback){
 
 function getAllPossibleLicenses(callback){
   glob(__dirname + '/licenses/*', function (er, licenses) {
-    var licenseNames = licenses.map(function(license){
+    var licenseNames = licenses.map(function(license) {
       return license.replace(__dirname + '/licenses/', '').replace('_', ' ');
     });
     callback(licenseNames);
@@ -77,7 +77,7 @@ function getAllPossibleLicenses(callback){
 function loadAssets(callback){
   var assets = {};
   getAllPossibleReadmes(function(readmes) {
-    getAllPossibleLicenses(function(licenses){
+    getAllPossibleLicenses(function(licenses) {
       assets.readmes = readmes;
       assets.licenses = licenses;
       callback(assets);
@@ -105,34 +105,34 @@ function loadPrompt(readmes, licenses, callback){
 
   inquirer.prompt([
     {
-      type: 'input',
-      name: 'project',
-      message: 'Name of your project?',
-      default: path.basename(sh.pwd()),
-    },
-    {
-      type: 'input',
-      name: 'maintainer',
-      message: 'Who maintains the project?',
-      default: config.user.name,
-    },
-    {
-      type: 'list',
-      name: 'readme',
-      message: 'Do you want me to create a base README.md?',
-      choices: readmes
-    },
-    {
-      type: 'list',
-      name: 'license',
-      message: 'Which license do you want to use?',
-      choices: licenses,
-    },
-    {
-      type: 'confirm',
-      name: 'gitinit',
-      message: 'Want me to initialize a git repository?',
-      default: true
+      type: 'input'
+      , name: 'project'
+      , message: 'Name of your project?'
+      , default: path.basename(sh.pwd())
+    }
+    ,{
+      type: 'input'
+      , name: 'maintainer'
+      , message: 'Who maintains the project?'
+      , default: config.user.name
+    }
+    , {
+      type: 'list'
+      , name: 'readme'
+      , message: 'Do you want me to create a base README.md?'
+      , choices: readmes
+    }
+    , {
+      type: 'list'
+      , name: 'license'
+      , message: 'Which license do you want to use?'
+      , choices: licenses
+    }
+    , {
+      type: 'confirm'
+      , name: 'gitinit'
+      , message: 'Want me to initialize a git repository?'
+      , default: true
     }
   ], function( answers ) {
     callback(answers);
