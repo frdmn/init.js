@@ -6,6 +6,7 @@ var clor = require('clor')
   , glob = require('glob')
   , gitConfig = require('git-config')
   , path = require('path')
+  , replace = require('replace')
   , config = gitConfig.sync();
 
 /**
@@ -164,6 +165,15 @@ function logSuccess(msg){
   console.log(clor.green('Success: ') + msg);
 }
 
+function replaceInFiles(search, replace, files){
+  replace({
+    regex: search
+    , replacement: replace
+    , paths: files
+    , silent: true
+  });
+}
+
 /* Prompt */
 
 if (checkIfCwdIsGitRepository()) {
@@ -171,12 +181,11 @@ if (checkIfCwdIsGitRepository()) {
   return false;
 } else {
   loadAssets(function(assets) {
-    loadPrompt(assets.readmes, assets.licenses, function(answers){
+    loadPrompt(assets.readmes, assets.licenses, function(answers) {
       var date = new Date();
       sh.cp('-f', __dirname + '/readmes/' + answers.readme, 'README.md');
       sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
-      sh.sed('-i', '%project%', answers.project, 'README.md');
-      sh.sed('-i', '%project%', answers.project, 'LICENSE');
+      replaceInFiles('a', 'b', [ './README.md', 'LICENSE' ] );
       sh.sed('-i', '%maintainer%', answers.maintainer, 'README.md');
       sh.sed('-i', '%maintainer%', answers.maintainer, 'LICENSE');
       sh.sed('-i', '%year%', date.getFullYear(), 'README.md');

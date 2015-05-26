@@ -11,6 +11,7 @@
     "git-config": "0.0.6",
     "glob": "^5.0.6",
     "inquirer": "^0.8.4",
+    "replace": "^0.3.0",
     "shelljs": "^0.4.0"
   },
   "bin": {
