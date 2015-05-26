@@ -41,7 +41,7 @@ function checkIfCwdIsGitRepository(){
 function getAllPossibleReadmes(callback){
   glob(__dirname + '/readmes/*', function (er, readmes) {
     var readmeNames = readmes.map(function(readme) {
-      return readme.replace(__dirname + '/readmes/', '').replace('_', ' ');
+      return readme.replace(__dirname + '/readmes/', '');
     });
     callback(readmeNames);
   });
@@ -59,7 +59,7 @@ function getAllPossibleReadmes(callback){
 function getAllPossibleLicenses(callback){
   glob(__dirname + '/licenses/*', function (er, licenses) {
     var licenseNames = licenses.map(function(license) {
-      return license.replace(__dirname + '/licenses/', '').replace('_', ' ');
+      return license.replace(__dirname + '/licenses/', '');
     });
     callback(licenseNames);
   });
