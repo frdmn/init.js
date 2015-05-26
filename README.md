@@ -2,7 +2,7 @@
 
 [![Current tag](http://img.shields.io/github/tag/[GitHubUsername]/workspace-initiator.svg)](https://github.com/frdmn/workspace-initiator/tags) [![Repository issues](http://issuestats.com/github/frdmn/workspace-initiator/badge/issue)](http://issuestats.com/github/frdmn/workspace-initiator)
 
-![](http://up.frd.mn/IQyQq.gif)
+![](http://up.frd.mn/755Ry.gif)
 
 A simple nodeJS based command line utility to quickly initialize a developer workspace / git repository including README templates and license files.
 
