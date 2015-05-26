@@ -165,6 +165,18 @@ function logSuccess(msg){
   console.log(clor.green('Success: ') + msg);
 }
 
+
+/**
+ * replaceInFiles
+ *
+ * Function to substitute a bunch of files at once.
+ *
+ * @param {string} regex search pattern
+ * @param {string} replacement string
+ * @param {string} array of files
+ *
+ */
+
 function replaceInFiles(searchFor, replaceWith, filesToWorkWith){
   replace({
     regex: searchFor
