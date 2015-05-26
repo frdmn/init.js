@@ -20,7 +20,7 @@ var clor = require('clor')
 function checkIfCwdIsGitRepository(){
   var cwd = sh.pwd();
 
-  if (sh.test('-e', cwd + '/.git')) {
+  if (sh.test('-e', cwd + '/.gits')) {
     return true;
   } else {
     return false;
@@ -181,6 +181,8 @@ if (checkIfCwdIsGitRepository()) {
       sh.sed('-i', '%maintainer%', answers.maintainer, 'LICENSE');
       sh.sed('-i', '%year%', date.getFullYear(), 'README.md');
       sh.sed('-i', '%year%', date.getFullYear(), 'LICENSE');
+      sh.sed('-i', '%license%', answers.license.toUpperCase(), 'README.md');
+      sh.sed('-i', '%license%', answers.license.toUpperCase(), 'LICENSE');
       if (config.github && config.github.user) {
         sh.sed('-i', '%github%', config.github.user, 'README.md');
         sh.sed('-i', '%github%', config.github.user, 'LICENSE');
