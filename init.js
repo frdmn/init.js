@@ -165,11 +165,11 @@ function logSuccess(msg){
   console.log(clor.green('Success: ') + msg);
 }
 
-function replaceInFiles(search, replace, files){
+function replaceInFiles(searchFor, replaceWith, filesToWorkWith){
   replace({
-    regex: search
-    , replacement: replace
-    , paths: files
+    regex: searchFor
+    , replacement: replaceWith
+    , paths: filesToWorkWith
     , silent: true
   });
 }
@@ -185,19 +185,14 @@ if (checkIfCwdIsGitRepository()) {
       var date = new Date();
       sh.cp('-f', __dirname + '/readmes/' + answers.readme, 'README.md');
       sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
-      replaceInFiles('a', 'b', [ './README.md', 'LICENSE' ] );
-      sh.sed('-i', '%maintainer%', answers.maintainer, 'README.md');
-      sh.sed('-i', '%maintainer%', answers.maintainer, 'LICENSE');
-      sh.sed('-i', '%year%', date.getFullYear(), 'README.md');
-      sh.sed('-i', '%year%', date.getFullYear(), 'LICENSE');
-      sh.sed('-i', '%license%', answers.license.toUpperCase(), 'README.md');
-      sh.sed('-i', '%license%', answers.license.toUpperCase(), 'LICENSE');
+      replaceInFiles('%project%', answers.project, [ './README.md', 'LICENSE' ] );
+      replaceInFiles('%maintainer%', answers.maintainer, [ './README.md', 'LICENSE' ] );
+      replaceInFiles('%year%', date.getFullYear(), [ './README.md', 'LICENSE' ] );
+      replaceInFiles('%license%', answers.license.toUpperCase(), [ './README.md', 'LICENSE' ] );
       if (config.github && config.github.user) {
-        sh.sed('-i', '%github%', config.github.user, 'README.md');
-        sh.sed('-i', '%github%', config.github.user, 'LICENSE');
+        replaceInFiles('%github%', config.github.user, [ './README.md', 'LICENSE' ] );
       } else {
-        sh.sed('-i', '%github%', '[GitHubUsername]', 'README.md');
-        sh.sed('-i', '%github%', '[GitHubUsername]', 'LICENSE');
+        replaceInFiles('%github%', '[GitHubUsername]', [ './README.md', 'LICENSE' ] );
       }
       if (answers.gitinit) {
         sh.exec('git init', {
