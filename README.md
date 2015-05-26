@@ -4,12 +4,12 @@
 
 ![](http://up.frd.mn/755Ry.gif)
 
-A simple nodeJS based command line utility to quickly initialize a developer workspace / git repository including README templates and license files.
+A simple NodeJS based command line utility to quickly initialize a developer workspace / git repository including README templates and license files.
 
 ## Installation
 
 1. Make sure you've installed all requirements
-2. Clone this repository:
+2. Clone this repository:  
   `git clone https://github.com/frdmn/workspace-initiator /tmp/workspace-initiator`
 3. Install the project using `npm`:  
   `npm install -g`
