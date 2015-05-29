@@ -21,7 +21,7 @@ var clor = require('clor')
 function checkIfCwdIsGitRepository(){
   var cwd = sh.pwd();
 
-  if (sh.test('-e', cwd + '/.gits')) {
+  if (sh.test('-e', cwd + '/.git')) {
     return true;
   } else {
     return false;
