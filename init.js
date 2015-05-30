@@ -99,9 +99,9 @@ function loadAssets(callback){
 function loadPrompt(readmes, licenses, callback){
   // extend arrays
   readmes.push(new inquirer.Separator());
-  readmes.push('✘ none');
+  readmes.push('none');
   licenses.push(new inquirer.Separator());
-  licenses.push('✘ none');
+  licenses.push('none');
 
   inquirer.prompt([
     {
@@ -194,18 +194,33 @@ if (checkIfCwdIsGitRepository()) {
 } else {
   loadAssets(function(assets) {
     loadPrompt(assets.readmes, assets.licenses, function(answers) {
-      var date = new Date();
-      sh.cp('-f', __dirname + '/readmes/' + answers.readme, 'README.md');
-      sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
-      replaceInFiles('%project%', answers.project, [ './README.md', 'LICENSE' ] );
-      replaceInFiles('%maintainer%', answers.maintainer, [ './README.md', 'LICENSE' ] );
-      replaceInFiles('%year%', date.getFullYear(), [ './README.md', 'LICENSE' ] );
-      replaceInFiles('%license%', answers.license.toUpperCase(), [ './README.md', 'LICENSE' ] );
-      if (config.github && config.github.user) {
-        replaceInFiles('%github%', config.github.user, [ './README.md', 'LICENSE' ] );
-      } else {
-        replaceInFiles('%github%', '[GitHubUsername]', [ './README.md', 'LICENSE' ] );
+      var date = new Date()
+      , filesToProcess = [];
+      console.log(answers);
+
+      if (answers.license && answers.license !== 'none') {
+        sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
+        filesToProcess.push('./LICENSE')
       }
+
+      if (answers.license && answers.readme !== 'none') {
+        sh.cp('-f', __dirname + '/readmes/' + answers.readme, 'README.md');
+        filesToProcess.push('./README.md')
+      }
+
+      // Substitute placeholder
+      replaceInFiles('%project%', answers.project, filesToProcess );
+      replaceInFiles('%maintainer%', answers.maintainer, filesToProcess );
+      replaceInFiles('%year%', date.getFullYear(), filesToProcess );
+      replaceInFiles('%license%', answers.license.toUpperCase(), filesToProcess );
+      // Check if github username is set in .gitconfig
+      if (config.github && config.github.user) {
+        replaceInFiles('%github%', config.github.user, filesToProcess );
+      } else {
+        // Otherwise add manual placeholder
+        replaceInFiles('%github%', '[GitHubUsername]', filesToProcess );
+      }
+      // Optionally init git repo
       if (answers.gitinit) {
         sh.exec('git init', {
           silent: true
