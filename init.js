@@ -196,7 +196,6 @@ if (checkIfCwdIsGitRepository()) {
     loadPrompt(assets.readmes, assets.licenses, function(answers) {
       var date = new Date()
       , filesToProcess = [];
-      console.log(answers);
 
       if (answers.license && answers.license !== 'none') {
         sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
