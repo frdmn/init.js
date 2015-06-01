@@ -1,6 +1,6 @@
-# workspace-initiator
+# init.js
 
-[![Current tag](http://img.shields.io/github/tag/[GitHubUsername]/workspace-initiator.svg)](https://github.com/frdmn/workspace-initiator/tags) [![Repository issues](http://issuestats.com/github/frdmn/workspace-initiator/badge/issue)](http://issuestats.com/github/frdmn/workspace-initiator)
+[![Current tag](http://img.shields.io/github/tag/[GitHubUsername]/init.js.svg)](https://github.com/frdmn/init.js/tags) [![Repository issues](http://issuestats.com/github/frdmn/init.js/badge/issue)](http://issuestats.com/github/frdmn/init.js)
 
 ![](http://up.frd.mn/755Ry.gif)
 
@@ -10,7 +10,7 @@ A simple NodeJS based command line utility to quickly initialize a developer wor
 
 1. Make sure you've installed all requirements
 2. Clone this repository:  
-  `git clone https://github.com/frdmn/workspace-initiator /tmp/workspace-initiator`
+  `git clone https://github.com/frdmn/init.js /tmp/init.js`
 3. Install the project using `npm`:  
   `npm install -g`
 
@@ -20,7 +20,7 @@ A simple NodeJS based command line utility to quickly initialize a developer wor
   `mkdir test-project`  
 * Change into that directory:  
   `cd test-project`  
-* Run `workspace-initiator`:  
+* Run `init.js`:  
   `init`  
 
 ## Contributing
