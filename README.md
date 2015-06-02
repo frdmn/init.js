@@ -39,7 +39,7 @@ A simple NodeJS based command line utility to quickly initialize a developer wor
 
 ## Version
 
-1.0.0
+1.0.1
 
 ## License
 
