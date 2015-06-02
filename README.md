@@ -9,10 +9,8 @@ A simple NodeJS based command line utility to quickly initialize a developer wor
 ## Installation
 
 1. Make sure you've installed all requirements
-2. Clone this repository:  
-  `git clone https://github.com/frdmn/init.js /tmp/init.js`
-3. Install the project using `npm`:  
-  `npm install -g`
+2. Install the project globally using `npm`:  
+  `npm install -g init.js`
 
 ## Usage
 
