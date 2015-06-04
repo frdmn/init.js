@@ -7,7 +7,29 @@ var clor = require('clor')
   , gitConfig = require('git-config')
   , path = require('path')
   , replace = require('replace')
+  , optimist = require('optimist')
   , config = gitConfig.sync();
+
+// Construct arguments expections
+var argv = optimist
+    .usage('Usage: init [options]')
+
+    .alias('h', 'help')
+    .describe('h', 'Show help and usage information')
+    .boolean('h')
+
+    .alias('i', 'ignore-git')
+    .default('i', false)
+    .describe('i', 'Ignore existing .git folder in the current directory, can be true or false')
+    .boolean('i')
+
+    .argv;
+
+// Check if 'help' argument is set, show usage/help information
+if (argv.help) {
+    optimist.showHelp();
+    process.exit(0);
+}
 
 /**
  * checkIfCwdIsGitRepository
