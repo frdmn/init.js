@@ -8,6 +8,7 @@ var clor = require('clor')
   , path = require('path')
   , replace = require('replace')
   , optimist = require('optimist')
+  , pjson = require('./package.json')
   , config = gitConfig.sync();
 
 // Construct arguments expections
@@ -17,6 +18,10 @@ var argv = optimist
     .alias('h', 'help')
     .describe('h', 'Show help and usage information')
     .boolean('h')
+
+    .alias('v', 'version')
+    .default('v', false)
+    .describe('v', 'Display version information')
 
     .alias('i', 'ignore-git')
     .default('i', false)
@@ -28,6 +33,12 @@ var argv = optimist
 // Check if 'help' argument is set, show usage/help information
 if (argv.help) {
     optimist.showHelp();
+    process.exit(0);
+}
+
+// Check if 'version' argument is set, show version
+if (argv.version) {
+    console.log(pjson.version);
     process.exit(0);
 }
 
