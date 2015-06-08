@@ -221,7 +221,7 @@ function replaceInFiles(searchFor, replaceWith, filesToWorkWith){
 
 /* Prompt */
 
-if (checkIfCwdIsGitRepository()) {
+if (!argv['ignore-git'] && checkIfCwdIsGitRepository()) {
   logError('Current directory is already an exisiting git repository!');
   return false;
 } else {
