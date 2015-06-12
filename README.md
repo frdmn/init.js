@@ -21,6 +21,17 @@ A simple NodeJS based command line utility to quickly initialize a developer wor
 * Run `init.js`:  
   `init`  
 
+You can optionally pass the following arguments:
+
+```
+Usage: init [options]
+
+Options:
+  -h, --help        Show help and usage information
+  -v, --version     Display version information                                                 [default: false]
+  -i, --ignore-git  Ignore existing .git folder in the current directory, can be true or false  [default: false]
+```
+
 ## Contributing
 
 1. Fork it
