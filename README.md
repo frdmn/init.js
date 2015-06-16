@@ -2,7 +2,7 @@
 
 [![Current tag](http://img.shields.io/github/tag/[GitHubUsername]/init.js.svg)](https://github.com/frdmn/init.js/tags) [![Repository issues](http://issuestats.com/github/frdmn/init.js/badge/issue)](http://issuestats.com/github/frdmn/init.js)
 
-![](http://up.frd.mn/755Ry.gif)
+![](http://i.imgur.com/HN4YlY9.gif)
 
 A simple NodeJS based command line utility to quickly initialize a developer workspace / git repository including README templates and license files.
 
