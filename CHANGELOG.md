@@ -2,6 +2,7 @@
 
 * Add cross system file system support
 * Add support for [custom templates](https://github.com/frdmn/init.js#custom-templates)
+* Add WTFPL licenses (thanks to [@vladde](https://github.com/vladdeSV) - [#6](https://github.com/frdmn/init.js/pull/6))
 * Small bug fixes
 
 # 1.1.0
