@@ -72,9 +72,9 @@ function checkIfCwdIsGitRepository(){
  */
 
 function getAllPossibleReadmes(callback){
-  glob(__dirname + '/readmes/*', function (er, readmes) {
+  glob(path.join(__dirname, 'readmes', '*'), function (er, readmes) {
     var readmeNames = readmes.map(function(readme) {
-      return readme.replace(__dirname + '/readmes/', '');
+      return readme;
     });
     callback(readmeNames);
   });
@@ -90,9 +90,9 @@ function getAllPossibleReadmes(callback){
  */
 
 function getAllPossibleLicenses(callback){
-  glob(__dirname + '/licenses/*', function (er, licenses) {
+  glob(path.join(__dirname, 'licenses', '*'), function (er, licenses) {
     var licenseNames = licenses.map(function(license) {
-      return license.replace(__dirname + '/licenses/', '');
+      return license;
     });
     callback(licenseNames);
   });
@@ -116,6 +116,26 @@ function loadAssets(callback){
       callback(assets);
     });
   });
+}
+
+/**
+ * createChoisesArray
+ *
+ * Turns an input array (full of paths), into an array
+ * that contains objects so Inquirer.js can work with
+ *
+ * @param  array input
+ * @return array
+ */
+
+function createChoisesArray(input){
+  var output = input.map(function(readme) {
+    var readmeObject = [];
+    readmeObject.name = path.basename(readme);
+    readmeObject.value = readme;
+    return readmeObject;
+  });
+  return output;
 }
 
 /**
@@ -153,13 +173,13 @@ function loadPrompt(readmes, licenses, callback){
       type: 'list'
       , name: 'readme'
       , message: 'Do you want me to create a base README.md?'
-      , choices: readmes
+      , choices: createChoisesArray(readmes)
     }
     , {
       type: 'list'
       , name: 'license'
       , message: 'Which license do you want to use?'
-      , choices: licenses
+      , choices: createChoisesArray(licenses)
     }
     , {
       type: 'confirm'
@@ -231,12 +251,12 @@ if (!argv['ignore-git'] && checkIfCwdIsGitRepository()) {
       , filesToProcess = [];
 
       if (answers.license && answers.license !== 'none') {
-        sh.cp('-f', __dirname + '/licenses/' + answers.license, 'LICENSE');
+        sh.cp('-f', answers.license, 'LICENSE');
         filesToProcess.push('./LICENSE')
       }
 
       if (answers.license && answers.readme !== 'none') {
-        sh.cp('-f', __dirname + '/readmes/' + answers.readme, 'README.md');
+        sh.cp('-f', answers.readme, 'README.md');
         filesToProcess.push('./README.md')
       }
 
