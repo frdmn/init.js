@@ -32,6 +32,12 @@ Options:
   -i, --ignore-git  Ignore existing .git folder in the current directory, can be true or false  [default: false]
 ```
 
+#### Custom templates
+
+Since version 1.2.0 you are able to add custom readme and license templates without sending a pull request on GitHub nor adding them in the `node_modules/` folder.
+
+Just create a directory called `.initjs` in your home folder and drop your template readmes into `~/.initjs/readmes/` and licenses ([obviously](https://i.imgur.com/eGHU2IZ.gif)) into `~/.initjs/licenses/`. 
+
 ## Contributing
 
 1. Fork it

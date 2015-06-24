@@ -11,6 +11,11 @@ var clor = require('clor')
   , pjson = require('./package.json')
   , config = gitConfig.sync();
 
+// Store file path for custom templates
+var homedir = (process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME
+    , customReadmes = path.join(homedir, '.initjs/readmes')
+    , customLicenses = path.join(homedir, '.initjs/licenses');
+
 // Construct arguments expections
 var argv = optimist
     .usage('Usage: init [options]')
@@ -73,10 +78,10 @@ function checkIfCwdIsGitRepository(){
 
 function getAllPossibleReadmes(callback){
   glob(path.join(__dirname, 'readmes', '*'), function (er, readmes) {
-    var readmeNames = readmes.map(function(readme) {
-      return readme;
+    // Get possible custom readmes
+    glob(path.join(customReadmes, '*'), function (er, customReadmes) {
+      callback(readmes.concat(customReadmes));
     });
-    callback(readmeNames);
   });
 }
 
@@ -91,10 +96,10 @@ function getAllPossibleReadmes(callback){
 
 function getAllPossibleLicenses(callback){
   glob(path.join(__dirname, 'licenses', '*'), function (er, licenses) {
-    var licenseNames = licenses.map(function(license) {
-      return license;
+    // Get possible custom licenses
+    glob(path.join(customLicenses, '*'), function (er, customLicenses) {
+      callback(licenses.concat(customLicenses));
     });
-    callback(licenseNames);
   });
 }
 
