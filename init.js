@@ -135,10 +135,10 @@ function loadAssets(callback){
 
 function createChoisesArray(input){
   var output = input.map(function(readme) {
-    var readmeObject = [];
-    readmeObject.name = path.basename(readme);
-    readmeObject.value = readme;
-    return readmeObject;
+    var choiceObject = [];
+    choiceObject.name = path.basename(readme).replace('_', ' ');
+    choiceObject.value = readme;
+    return choiceObject;
   });
   return output;
 }
