@@ -1,3 +1,7 @@
+# 1.2.1
+
+* Cleanup filenames of licenses/readmes in prompt
+
 # 1.2.0
 
 * Add cross system file system support
