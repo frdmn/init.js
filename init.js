@@ -269,7 +269,7 @@ if (!argv['ignore-git'] && checkIfCwdIsGitRepository()) {
       replaceInFiles('%project%', answers.project, filesToProcess );
       replaceInFiles('%maintainer%', answers.maintainer, filesToProcess );
       replaceInFiles('%year%', date.getFullYear(), filesToProcess );
-      replaceInFiles('%license%', answers.license.toUpperCase(), filesToProcess );
+      replaceInFiles('%license%', path.basename(answers.license).replace('_', ' ').toUpperCase(), filesToProcess );
       // Check if github username is set in .gitconfig
       if (config.github && config.github.user) {
         replaceInFiles('%github%', config.github.user, filesToProcess );
