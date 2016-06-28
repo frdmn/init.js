@@ -1,3 +1,7 @@
+# 1.2.3
+
+* Fix conversion error (`TypeError('Path must be a string.')`)
+
 # 1.2.2
 
 * Use license name instead of filename in README.md
