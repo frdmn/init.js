@@ -136,7 +136,7 @@ function loadAssets(callback){
 function createChoisesArray(input){
   var output = input.map(function(readme) {
     var choiceObject = [];
-    choiceObject.name = path.basename(readme).replace('_', ' ');
+    choiceObject.name = path.basename(readme.toString()).replace('_', ' ');
     choiceObject.value = readme;
     return choiceObject;
   });
@@ -166,7 +166,7 @@ function loadPrompt(readmes, licenses, callback){
       type: 'input'
       , name: 'project'
       , message: 'Name of your project?'
-      , default: path.basename(sh.pwd())
+      , default: path.basename(sh.pwd().toString())
     }
     ,{
       type: 'input'
