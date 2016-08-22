@@ -1,3 +1,7 @@
+# 1.2.5
+
+* Update formatting of the default readme files
+
 # 1.2.4
 
 * Hardcode inquirer version 0.12.0 since anything later than that uses promises instead of callback functions
