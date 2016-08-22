@@ -83,7 +83,7 @@ Just create a directory called `.initjs` in your home folder and drop your templ
 
 ## Version
 
-1.2.4
+1.2.5
 
 ## License
 
