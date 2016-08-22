@@ -9,17 +9,32 @@ A simple NodeJS based command line utility to quickly initialize a developer wor
 ## Installation
 
 1. Make sure you've installed all requirements
-2. Install the project globally using `npm`:  
-  `npm install -g init.js`
+2. Install the project globally using `npm`:
+
+    ```shell
+    npm install -g init.js
+    ```
 
 ## Usage
 
-* Create a new folder for your new project:  
-  `mkdir test-project`  
-* Change into that directory:  
-  `cd test-project`  
-* Run `init.js`:  
-  `init`  
+* Create a new folder for your new project:
+
+    ```shell
+    mkdir test-project
+    ```
+
+* Change into that directory:
+
+
+    ```shell
+    cd test-project
+    ```
+
+* Run `init.js`:
+
+    ```shell
+    init
+    ```
 
 You can optionally pass the following arguments:
 
@@ -41,12 +56,24 @@ Just create a directory called `.initjs` in your home folder and drop your templ
 ## Contributing
 
 1. Fork it
-2. Create your feature branch:  
-  `git checkout -b feature/my-new-feature`
-3. Commit your changes:  
-  `git commit -am 'Add some feature'`
-4. Push to the branch:  
-  `git push origin feature/my-new-feature`
+2. Create your feature branch:
+
+    ```shell
+    git checkout -b feature/my-new-feature
+    ```
+
+3. Commit your changes:
+
+    ```shell
+    git commit -am 'Add some feature'
+    ```
+
+4. Push to the branch:
+
+    ```shell
+    git push origin feature/my-new-feature
+    ```
+
 5. Submit a pull request
 
 ## Requirements / Dependencies
