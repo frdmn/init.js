@@ -283,7 +283,7 @@ if (!argv['ignore-git'] && checkIfCwdIsGitRepository()) {
           silent: true
         });
       }
-      logSuccess('Workspace successfully set up! Don\'t forget to adjust the mising placeholders :)');
+      logSuccess('Workspace successfully set up! Don\'t forget to adjust the missing placeholders :)');
     });
   });
 }
