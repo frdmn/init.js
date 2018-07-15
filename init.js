@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var clor = require('clor')
+var turbocolor = require('turbocolor')
   , sh = require('shelljs')
   , inquirer = require('inquirer')
   , glob = require('glob')
@@ -207,7 +207,7 @@ function loadPrompt(readmes, licenses, callback){
  */
 
 function logError(msg){
-  console.log(clor.red('Error: ') + msg);
+  console.log(turbocolor.red('Error: ') + msg);
 }
 
 /**
@@ -220,7 +220,7 @@ function logError(msg){
  */
 
 function logSuccess(msg){
-  console.log(clor.green('Success: ') + msg);
+  console.log(turbocolor.green('Success: ') + msg);
 }
 
 
