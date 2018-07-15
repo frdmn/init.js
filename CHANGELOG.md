@@ -1,3 +1,8 @@
+# 1.3.0
+
+* Chore, cleanup and fixing typos
+* Update Node dependencies
+
 # 1.2.5
 
 * Update formatting of the default readme files

@@ -91,7 +91,7 @@ git config --global github.user YourUsername
 
 ## Version
 
-1.2.6
+1.3.0
 
 ## License
 
