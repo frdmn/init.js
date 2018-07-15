@@ -192,7 +192,7 @@ function loadPrompt(readmes, licenses, callback){
       , message: 'Want me to initialize a git repository?'
       , default: true
     }
-  ], function( answers ) {
+  ]).then(answers => {
     callback(answers);
   });
 }
