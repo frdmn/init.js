@@ -53,6 +53,14 @@ Since version 1.2.0 you are able to add custom readme and license templates with
 
 Just create a directory called `.initjs` in your home folder and drop your template readmes into `~/.initjs/readmes/` and licenses ([obviously](https://i.imgur.com/eGHU2IZ.gif)) into `~/.initjs/licenses/`. 
 
+#### Automatically replace GitHub username
+
+If you have the `github.user` git configuration set - it will replace your GitHub user automatically. You can set it usig the following command:
+
+```
+git config --global github.user YourUsername
+```
+
 ## Contributing
 
 1. Fork it
